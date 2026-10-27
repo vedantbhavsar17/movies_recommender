@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Recommender - MovieMatch{% endblock %}
+
+{% block content %}
+<section class="recommender-page">
+    <div class="section-heading">
+        <span class="eyebrow">Content-based recommendation model</span>
+        <h2>Movie &amp; Series Recommender</h2>
+        <p>Select a title you enjoyed. The trained model compares its features with the catalogue and returns the five most similar titles.</p>
+    </div>
+
+    <form class="recommend-form" method="post" action="{{ url_for('recommender') }}">
+        <label for="title">Movie or series title</label>
+        <div class="recommend-form__row">
+            <input id="title" name="title" list="movie-titles" value="{{ selected_title }}" placeholder="For example: Blood &amp; Water" autocomplete="off" required>
+            <button class="button button--primary" type="submit">Run recommender model</button>
+        </div>
+        <datalist id="movie-titles">
+            {% for title in titles %}<option value="{{ title }}">{% endfor %}
+        </datalist>
+    </form>
+
+    {% if error %}<p class="form-message form-message--error" role="alert">{{ error }}</p>{% endif %}
+
+    {% if recommendations is not none and not error %}
+    <section class="results" aria-live="polite">
+        <div class="results__heading">
+            <div>
+                <span class="eyebrow">Model output</span>
+                <h3>Because you liked “{{ selected_title }}”</h3>
+            </div>
+            <span>{{ recommendations|length }} recommendations generated</span>
+        </div>
+        <div class="result-grid">
+            {% for movie in recommendations %}
+            <article class="result-card">
+                <div class="result-card__top">
+                    <span class="result-card__number">{{ "%02d"|format(loop.index) }}</span>
+                    <strong>{{ movie.score }}% match</strong>
+                </div>
+                <h3>{{ movie.title }}</h3>
+                <p class="result-card__meta">{{ movie.type }}{% if movie.release_year %} · {{ movie.release_year }}{% endif %}{% if movie.duration %} · {{ movie.duration }} min{% endif %}</p>
+                <p>{{ movie.description|capitalize }}</p>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+</section>
+{% endblock %}
