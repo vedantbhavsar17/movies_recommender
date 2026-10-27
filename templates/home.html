@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}MovieMatch - Movie & Series Recommender{% endblock %}
+
+{% block content %}
+    <section class="hero">
+        <div class="hero__content">
+            <span class="eyebrow">Machine Learning Recommendation System</span>
+            <h2>Find your next favorite movie or series.</h2>
+            <p class="hero__description">MovieMatch helps you discover entertainment you will enjoy. Choose a title you already like and receive relevant recommendations powered by machine learning.</p>
+            <div class="hero__actions">
+                <a class="button button--primary" href="{{ url_for('recommender') }}">Get recommendations <span aria-hidden="true">→</span></a>
+                <a class="button button--secondary" href="#about">Explore the project</a>
+            </div>
+        </div>
+        <div class="hero__visual" role="img" aria-label="Original cinematic artwork showing science fiction, noir, and adventure worlds">
+            <div class="match-badge"><strong>92%</strong> match for you</div>
+        </div>
+    </section>
+
+    <section class="section" id="features">
+        <div class="section-heading">
+            <span class="eyebrow">What you can do</span>
+            <h2>Less searching. More watching.</h2>
+            <p>Use a simple, focused experience to discover titles that match your interests.</p>
+        </div>
+        <div class="card-grid">
+            <article class="feature-card"><div class="feature-card__icon" aria-hidden="true">🎬</div><h3>Discover movies</h3><p>Enter a movie you love and explore similar films based on their content and characteristics.</p></article>
+            <article class="feature-card"><div class="feature-card__icon" aria-hidden="true">📺</div><h3>Explore series</h3><p>Find binge-worthy series related to the stories, genres, and themes you already enjoy.</p></article>
+            <article class="feature-card"><div class="feature-card__icon" aria-hidden="true">⚡</div><h3>Get instant results</h3><p>Receive a ranked list of relevant recommendations through a fast and easy-to-use interface.</p></article>
+        </div>
+    </section>
+
+    <section class="section project-section" id="about">
+        <div class="project-copy">
+            <span class="eyebrow">About the project</span>
+            <h2>A practical ML project built around content discovery.</h2>
+            <p>This machine learning project recommends both movies and web series. The engine compares title information such as genres, keywords, cast, crew, and overview text to find closely related content.</p>
+            <p>It demonstrates a complete workflow: preparing entertainment data, converting text features into numerical vectors, measuring similarity, and presenting the results through a Flask web application.</p>
+        </div>
+        <div class="workflow" aria-label="Recommendation workflow">
+            <div class="workflow__item"><span>01</span><div><strong>Select</strong><small>Choose a title</small></div></div>
+            <div class="workflow__line"></div>
+            <div class="workflow__item"><span>02</span><div><strong>Analyze</strong><small>Compare features</small></div></div>
+            <div class="workflow__line"></div>
+            <div class="workflow__item"><span>03</span><div><strong>Recommend</strong><small>Show similar titles</small></div></div>
+        </div>
+    </section>
+
+    <section class="section" id="technology">
+        <div class="section-heading"><span class="eyebrow">Technology</span><h2>Tools used to build the project</h2></div>
+        <div class="tech-list">
+            <div class="tech-item"><strong>Python</strong><span>Core programming language</span></div>
+            <div class="tech-item"><strong>Flask</strong><span>Web application framework</span></div>
+            <div class="tech-item"><strong>Pandas</strong><span>Data cleaning and analysis</span></div>
+            <div class="tech-item"><strong>Scikit-learn</strong><span>Vectorization and similarity</span></div>
+            <div class="tech-item"><strong>Jupyter</strong><span>Model research and experiments</span></div>
+            <div class="tech-item"><strong>HTML & CSS</strong><span>Responsive user interface</span></div>
+        </div>
+    </section>
+
+    <section class="section connect-section" id="connect">
+        <div class="section-heading"><span class="eyebrow">Code, notebook & profile</span><h2>Explore my work</h2><p>Review the source code, follow the model-building notebook, or connect with me professionally.</p></div>
+        <div class="social-links">
+            <!-- Replace this URL with your exact GitHub repository URL. -->
+            <a class="social-card" href="https://github.com/" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .7A11.5 11.5 0 0 0 8.36 23.1c.58.1.79-.25.79-.56v-2.23c-3.23.7-3.91-1.37-3.91-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.77 2.72 1.26 3.38.96.1-.75.4-1.26.74-1.55-2.58-.29-5.29-1.29-5.29-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.47.11-3.05 0 0 .97-.31 3.16 1.18a10.9 10.9 0 0 1 5.75 0c2.19-1.49 3.16-1.18 3.16-1.18.63 1.58.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.72 5.38-5.3 5.67.42.36.79 1.07.79 2.16v3.2c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .7Z"/></svg>
+                <span><strong>GitHub</strong><small>View source code</small></span><span class="social-card__arrow" aria-hidden="true">↗</span>
+            </a>
+            <!-- Replace this URL with your exact Kaggle notebook URL. -->
+            <a class="social-card" href="https://www.kaggle.com/" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 2.2c0-.66.52-1.2 1.17-1.2h1.16v8.3l7.04-7.72A1.7 1.7 0 0 1 16.13 1h2.2l-7.5 8.23 8.08 12.83H16.4L9.2 10.93l-1.37 1.5V23H6.67a1.18 1.18 0 0 1-1.17-1.2V2.2Z"/></svg>
+                <span><strong>Kaggle</strong><small>Open ML notebook</small></span><span class="social-card__arrow" aria-hidden="true">↗</span>
+            </a>
+            <!-- Replace this URL with your exact LinkedIn profile URL. -->
+            <a class="social-card" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.37 7.97H1.75V22h3.62V7.97ZM3.56 2A2.1 2.1 0 1 0 3.56 6.2 2.1 2.1 0 0 0 3.56 2ZM22.25 13.96c0-4.22-2.25-6.18-5.26-6.18-2.42 0-3.5 1.33-4.1 2.27V7.97H9.27V22h3.62v-6.95c0-1.83.35-3.61 2.63-3.61 2.25 0 2.28 2.1 2.28 3.73V22h3.62l.83-8.04Z"/></svg>
+                <span><strong>LinkedIn</strong><small>Connect with me</small></span><span class="social-card__arrow" aria-hidden="true">↗</span>
+            </a>
+        </div>
+    </section>
+{% endblock %}
