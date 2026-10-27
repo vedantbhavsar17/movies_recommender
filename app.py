@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, jsonify, render_template, request
 
 from backendlogic import get_movie_titles, recommend_movie
@@ -36,4 +38,8 @@ def recommender():
     )
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run(
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", "5000")),
+        debug=False,
+    )
